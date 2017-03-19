@@ -225,14 +225,24 @@ export default class PageTransition extends React.Component {
   }
 
   render() {
+    let childs = [];
+
+    childs.push(React.Children.map(this.state.child1, element =>
+      React.cloneElement(element, { ref: 'child1' })
+    ));
+    if (this.state.nextChild === 1) {
+      childs.unshift(React.Children.map(this.state.child2, element =>
+        React.cloneElement(element, { ref: 'child2' })
+      ));
+    } else {
+      childs.push(React.Children.map(this.state.child2, element =>
+        React.cloneElement(element, { ref: 'child2' })
+      ));
+    }
+
     return (
-      <div className="transition-wrapper">
-        {React.Children.map(this.state.child1, element =>
-            React.cloneElement(element, { ref: 'child1' })
-        )}
-        {React.Children.map(this.state.child2, element =>
-          React.cloneElement(element, { ref: 'child2' })
-        )}
+      <div className="transition-wrapper YOYOOO">
+        {childs}
       </div>
     );
   }
