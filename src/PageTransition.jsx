@@ -241,7 +241,7 @@ export default class PageTransition extends React.Component {
     }
 
     return (
-      <div className="transition-wrapper YOYOOO">
+      <div className="transition-wrapper">
         {childs}
       </div>
     );
